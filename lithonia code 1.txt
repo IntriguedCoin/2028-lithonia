@@ -19,7 +19,7 @@ campaignTrail_temp.global_parameter_json = [
             "issue_stance_6_max": 0.71,
             "global_variance": 0.01,
             "state_variance": 0.005,
-            "question_count": 25,
+            "question_count": 28,
             "default_map_color_hex": "#C9C9C9",
             "no_state_map_color_hex": "#999999"
         }
@@ -471,8 +471,12 @@ document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_wi
 
 styling = document.createElement("style");
 document.head.appendChild(styling);
-
+document.getElementById("inner_window_1").children[1].innerHTML =  `<li>Welcome to <b><span style="color: #434544;">Lithonia</span></b>!</li><li>An alternate universe where Joe Biden wins re-election in 2024.</span></b></li><li>You can play as <b><span style="color: #2946af;">Josh Shapiro</span></b> and attempt to carry on the torch of liberalism for the next four years of America's turbulent history.</li><li>Or you could play as <b><span style="color: #d33737;">Brian Kemp</span></b> with the goal of restoring true conservatism to the Republican Party and America, while avoiding internal fights from extremists.</li><li>There's plentiful CYOA and special endings to be achieved.</li><li>How do you feel?</li>`;
+document.getElementById('game_start').innerHTML = '<b>Liberated.</b>';
 styling.innerHTML = `
+#inner_window_1 ul {
+    padding: 0 10px;
+}
 #opponent_selection_id_back {
     display: none;
 }
