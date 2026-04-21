@@ -431,7 +431,7 @@ jet_data = {
     "containerColor": "#ffffff",
     "innerWindowColor": "#ff0000",
     "bannerImageUrl": "https://files.catbox.moe/0oe9c6.png",
-    "backgroundImageUrl": "https://coolbackgrounds.io/images/backgrounds/white/pure-white-background-85a2a7fd.jpg",
+    "backgroundImageUrl": "https://file.garden/Zrv1pPC1HzBK0svl/Capitol%20Building%20Night%20Landscape%20Zoom.jpg",
     "endingTextColor": "#000000",
     "customQuote": "I feel liberated / Over-medicated",
     "gameTitle": "Lithonia"
@@ -462,12 +462,33 @@ $(".container")[0].style.backgroundColor = "#252525";
 
 document.getElementById("header").src = "https://file.garden/Zrv1pPC1HzBK0svl/LithoniaBanner.png";
 
-document.body.background = "https://coolbackgrounds.io/images/backgrounds/white/pure-white-background-85a2a7fd.jpg";
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundSize = "cover";
+
+document.body.background = "https://file.garden/Zrv1pPC1HzBK0svl/Capitol%20Building%20Night%20Landscape%20Zoom.jpg";
 
 document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#BF2C43!important;} .election_description_window {height: 100%!important;}</style>";
 
+let style = document.createElement('style');
+style.type = 'text/css';
+style.id = 'dynamic-style';
 
-//#endcode
+style.innerHTML = `
+  .campaign_trail_start_emphasis {
+    background-color: #434544;
+  }
+  a:-webkit-any-link {
+    color: #000000;
+  }
+`;
+
+document.head.appendChild(style);
+
+next0 = function() {document.getElementById("screen0").style.display = "none";document.getElementById("screen1").style.display = "initial";}
+back0 = function() {document.getElementById("screen0").style.display = "initial";document.getElementById("screen1").style.display = "none";}
+
+
+RecReading=true
 
 styling = document.createElement("style");
 document.head.appendChild(styling);
@@ -494,3 +515,253 @@ let z = new MutationObserver((mutationsList, observer) => {
 z.observe(document, { subtree: true, childList: true });
 
 }
+
+// Credits button
+(function () {
+  const creditsList = [
+    {
+      name: "Benster",
+      text: "for ''creating'' and leading this project.",
+      image: "https://i.postimg.cc/rF2XSYQ1/Benster.png"
+    },
+    {
+      name: "Goosey",
+      text: "for helping with coding.",
+      image: "https://i.postimg.cc/4xXD0HCS/Goosey.png"
+    },
+    {
+      name: "''Astro'' (Sammyz500z)",
+      text: "for approving of this mod—he campaigned for Shapiro in 2022 you know?",
+      image: "https://i.postimg.cc/6QbTqNV1/2446f92bc800d3b7da715833d3be530f.png"
+    },
+    {
+      name: "Greguel",
+      text: "for overseeing development and giving his eternal support for the mod.",
+      image: "https://i.postimg.cc/pTWTYdF5/87ec6c314276153cb5328046cf82f78d.png"
+    },
+    {
+      name: "Samthaman/Friendly Ferret",
+      text: "for doing the endings and for.. hey, what else does he even do again?",
+      image: "https://i.postimg.cc/9FP31tk0/Ferret.webp"
+    },
+    {
+      name: "C0SM0",
+      text: "for providing image & soundtrack help, as well as suggesting coding addons. (˶˃ ᵕ ˂˶)",
+      image: "https://avatars.githubusercontent.com/u/171953810?v=4"
+    },
+    {
+      name: "Apollo",
+      text: "for creating the code 1.",
+      image: "https://i.postimg.cc/25rS2STk/catmemefunny.gif"
+    },
+    {
+      name: "Deitsch",
+      text: "for helping write the mod with love and care.",
+      image: "https://i.postimg.cc/FHqLKPfB/avatars-000401165964-qichru-t1080x1080.jpg"
+    },
+    {
+      name: "Landon5597",
+      text: "for helping write the Republican side.",
+      image: "https://i.postimg.cc/2yZYCsTj/San-Juan-Hill-by-Kurz-and-Allison.jpg"
+    },
+    "<b>StrawberryMaster</b>, for providing coding addons & the soundtrack code.",
+    "<b>LittleAmericanMan_85501</b> for providing the lovely banner.",
+    "Kudos to the broader <b>TCT Community</b> for providing support and feedback.",
+    "And thanks to <b>you,</b> for playing this mod!"
+  ];
+
+  if (typeof campaignTrail_temp !== 'undefined') {
+    campaignTrail_temp.credits = "<button class='credits-btn' onclick='window.showCredits()'>The Lithonia Team!</button>";
+  }
+
+  const injectCSS = () => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+            .credits-btn {
+				color: #69110d;
+				cursor: pointer;
+				font-weight: normal;
+				padding: .3em .5em;
+				text-decoration: underline;
+			}
+			.credits-btn:hover {
+				color: #004080;
+			}
+
+			/* Modal styling */
+			.credits-modal {
+				display: none;
+				position: fixed;
+				z-index: 1000;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				align-items: center;
+                justify-content: center;
+			}
+			.credits-content {
+				background-color: #ffffff;
+				padding: 1rem;
+				border: .2rem groove #123780;
+				border-radius: .2rem .4rem;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				width: 40%;
+				max-width: 500px;
+				position: relative;
+				animation: fadeIn 0.3s;
+				display: flex;
+                flex-direction: column;
+                max-height: 90vh;
+			}
+			@keyframes fadeIn {
+				from { opacity: 0; }
+				to { opacity: 1; }
+			}
+			.credits-content h3 {
+				margin-top: 0;
+				color: #333;
+				font-size: 14px;
+				border-bottom: 1px solid #ddd;
+				padding-bottom: 10px;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				flex-shrink: 0;
+			}
+
+			.credits-content ul {
+				list-style-type: none;
+				padding: 0;
+				overflow-y: auto;
+                padding-right: 5px;
+			}
+
+			.credits-content li {
+				padding: .4rem 0;
+				border-bottom: 2px dotted #ddd;
+				font-size: 12px;
+			}
+
+			.credits-content li:last-child {
+				border-bottom: none;
+				padding-bottom: 0;
+			}
+
+			.credit-item-with-image {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+			}
+
+			.credit-avatar {
+				border: 2px groove #df1600;
+				width: 90px;
+				height: 90px;
+				object-fit: cover;
+				flex-shrink: 0;
+			}
+
+			.credit-text {
+				flex: 1;
+			}
+
+			.credit-name {
+				font-weight: bold;
+				color: #000000;
+			}
+
+			.close-credits {
+				position: absolute;
+				right: 12px;
+				top: 4px;
+				color: #aaa;
+				font-size: 30px;
+				font-weight: bold;
+				cursor: pointer;
+				z-index: 10;
+			}
+
+			.close-credits:hover {
+				color: #333;
+			}
+        `;
+    document.head.appendChild(styleElement);
+  };
+
+  const createModal = () => {
+    if (document.getElementById('creditsModal')) {
+      return;
+    }
+
+    const modal = document.createElement('div');
+    modal.id = 'creditsModal';
+    modal.className = 'credits-modal';
+
+    let creditsListHTML = '';
+    creditsList.forEach(credit => {
+      if (typeof credit === 'string') {
+        creditsListHTML += `<li>${credit}</li>`;
+      } else {
+        creditsListHTML += `
+                    <li>
+                        <div class="credit-item-with-image">
+                            <img src="${credit.image}" alt="${credit.name}" class="credit-avatar">
+                            <div class="credit-text">
+                                <span class="credit-name">${credit.name}</span>, ${credit.text}
+                            </div>
+                        </div>
+                    </li>
+                `;
+      }
+    });
+
+    modal.innerHTML = `
+            <div class="credits-content">
+                <span class="close-credits">&times;</span>
+                <h3>CREDITS</h3>
+                <ul>${creditsListHTML}</ul>
+            </div>
+        `;
+
+    document.body.appendChild(modal);
+
+    document.querySelector('.close-credits').addEventListener('click', hideCredits);
+    modal.addEventListener('click', event => {
+      if (event.target === modal) {
+        hideCredits();
+      }
+    });
+  };
+
+  const showCredits = () => {
+    createModal();
+    document.getElementById('creditsModal').style.display = 'flex';
+  };
+
+  const hideCredits = () => {
+    const modal = document.getElementById('creditsModal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  };
+
+  const setupKeyListener = () => {
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        hideCredits();
+      }
+    });
+  };
+
+  const init = () => {
+    injectCSS();
+    setupKeyListener();
+
+    window.showCredits = showCredits;
+  };
+
+  init();
+})();
+
+//#endcode
